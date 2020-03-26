@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<header class="accentHeader pageHeader">
+    @{
+        Html.RenderPartial("_HeaderNavBar");
+    }
+</header>
+<article id="mainContentFullWidth">
+    <h1>StudentS</h1>
+    <div id="Students"></div>
+</article>
+<script>
+    var uri = 'http://localhost:60748//api/Student';
+
+    $(document).ready(function () {
+        $.getJSON(uri)
+            .done(function (data) {
+                $.each(data, function (key, item) {
+                    $('<p>', { text: item.Name }).appendTo
+                        ($('#Students '));
+                });
+            });
+    });
+
+</script>
+
